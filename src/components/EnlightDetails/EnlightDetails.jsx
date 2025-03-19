@@ -1,46 +1,56 @@
 import { useParams } from 'react-router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import * as enlightService from '../../services/enlightService';
 import CommentForm from '../CommentForm/CommentForm';
+import { UserContext } from '../../contexts/UserContext';
 
-const EnlightDetails = () => {
-    const [enlight, setEnlight] = useState(null);
-
-    const { enlightId } = useParams();
-    
-
-    useEffect(() => {
-        const fetchEnlight = async () => {
-          const enlightData = await enlightService.show(enlightId);
-          setEnlight(enlightData);
-        };
-        fetchEnlight();
-      }, [enlightId]);
-    
-      if (!enlight) return <main>Loading...</main>;
-
-      const handleAddComment = async (commentFormData) => {
-        const newComment = await enlightService.createComment(enlightId, commentFormData);
-        setEnlight({ ...enlight, comments: [...enlight.comments, newComment] });
-      };
+const EnlightDetails = (props) => {
+  const { enlightId } = useParams();
+  const { user } = useContext(UserContext);
+  const [enlight, setEnlight] = useState(null);
 
 
-      return (
-        <main>
-          <section>
-            <header>
-              <p>{enlight.category}</p>
-              <h1>{enlight.title}</h1>
-              <p>
-                {`${enlight.author.username} posted on
+
+
+  useEffect(() => {
+    const fetchEnlight = async () => {
+      const enlightData = await enlightService.show(enlightId);
+      setEnlight(enlightData);
+    };
+    fetchEnlight();
+  }, [enlightId]);
+
+  if (!enlight) return <main>Loading...</main>;
+
+  const handleAddComment = async (commentFormData) => {
+    const newComment = await enlightService.createComment(enlightId, commentFormData);
+    setEnlight({ ...enlight, comments: [...enlight.comments, newComment] });
+  };
+
+
+  return (
+    <main>
+      <section>
+        <header>
+          <p>{enlight.category}</p>
+          <h1>{enlight.title}</h1>
+          <p>
+            {`${enlight.author.username} posted on
                 ${new Date(enlight.createdAt).toLocaleDateString()}`}
-              </p>
-            </header>
-            <p>{enlight.text}</p>
-          </section>
-          <section>
+          </p>
+          {enlight.author._id === user._id && (
+              <>
+                 <button onClick={() => props.handleDeleteEnlight(enlightId)}>
+              Delete
+            </button>
+          </>
+        )}
+        </header>
+        <p>{enlight.text}</p>
+      </section>
+      <section>
         <h2>Comments</h2>
-        <CommentForm handleAddComment={handleAddComment}/>
+        <CommentForm handleAddComment={handleAddComment} />
 
         {!enlight.comments.length && <p>There are no comments.</p>}
 
@@ -56,10 +66,10 @@ const EnlightDetails = () => {
           </article>
         ))}
       </section>
-        </main>
-      );
+    </main>
+  );
 
 
-  };
-  
-  export default EnlightDetails;
+};
+
+export default EnlightDetails;

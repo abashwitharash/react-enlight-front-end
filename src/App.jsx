@@ -34,6 +34,12 @@ const App = () => {
     setEnlights([newEnlight, ...enlights]);
     navigate('/enlights');
   };
+
+  const handleDeleteEnlight = async (enlightId) => {
+    const deletedEnlight = await enlightService.deleteEnlight(enlightId);
+    setEnlights(enlights.filter((enlight) => enlight._id !== enlightId));
+    navigate('/enlights');
+  };
   
   return (
     <>
@@ -46,7 +52,7 @@ const App = () => {
             <Route path='/enlights' element={<EnlightList enlights={enlights} />} />
             <Route 
               path='/enlights/:enlightId'
-              element={<EnlightDetails />}
+              element={<EnlightDetails handleDeleteEnlight={handleDeleteEnlight}/>}
             />
             <Route path='/enlights/new' element={<EnlightForm handleAddEnlight={handleAddEnlight}/>  }  />
 
