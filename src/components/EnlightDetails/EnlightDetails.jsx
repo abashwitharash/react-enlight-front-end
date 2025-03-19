@@ -7,7 +7,7 @@ const EnlightDetails = () => {
     const [enlight, setEnlight] = useState(null);
 
     const { enlightId } = useParams();
-    console.log('enlightId', enlightId);
+    
 
     useEffect(() => {
         const fetchEnlight = async () => {
@@ -19,7 +19,12 @@ const EnlightDetails = () => {
     
       if (!enlight) return <main>Loading...</main>;
 
-console.log(enlight)
+      const handleAddComment = async (commentFormData) => {
+        const newComment = await enlightService.createComment(enlightId, commentFormData);
+        setEnlight({ ...enlight, comments: [...enlight.comments, newComment] });
+      };
+
+
       return (
         <main>
           <section>
@@ -35,7 +40,7 @@ console.log(enlight)
           </section>
           <section>
         <h2>Comments</h2>
-        <CommentForm />
+        <CommentForm handleAddComment={handleAddComment}/>
 
         {!enlight.comments.length && <p>There are no comments.</p>}
 

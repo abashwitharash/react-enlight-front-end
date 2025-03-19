@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CommentForm = () => {
+const CommentForm = (props) => {
   const [formData, setFormData] = useState({ text: '' });
 
   const handleChange = (evt) => {
@@ -9,7 +9,7 @@ const CommentForm = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // add handleAddComment
+    props.handleAddComment(formData);
     setFormData({ text: '' });
   };
 
