@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import * as enlightService from '../../services/enlightService';
+import CommentForm from '../CommentForm/CommentForm';
 
 const EnlightDetails = () => {
     const [enlight, setEnlight] = useState(null);
@@ -34,6 +35,7 @@ const EnlightDetails = () => {
           </section>
           <section>
         <h2>Comments</h2>
+        <CommentForm />
 
         {!enlight.comments.length && <p>There are no comments.</p>}
 
