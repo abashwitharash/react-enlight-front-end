@@ -8,6 +8,7 @@ import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import EnlightList from './components/EnlightList/EnlightList';
 import * as enlightService from './services/enlightService';
+import EnlightDetails from './components/EnlightDetails/EnlightDetails';
 
 import { UserContext } from './contexts/UserContext';
 
@@ -34,6 +35,10 @@ const App = () => {
           <>
             {/* Protected routes (available only to signed-in users) */}
             <Route path='/enlights' element={<EnlightList enlights={enlights} />} />
+            <Route 
+              path='/enlights/:enlightId'
+              element={<EnlightDetails />}
+            />
           </>
         ) : (
           <>
