@@ -19,12 +19,12 @@ const EnlightDetails = () => {
     
       if (!enlight) return <main>Loading...</main>;
 
-
+console.log(enlight)
       return (
         <main>
           <section>
             <header>
-              <p>{enlight.category.toUpperCase()}</p>
+              <p>{enlight.category}</p>
               <h1>{enlight.title}</h1>
               <p>
                 {`${enlight.author.username} posted on
