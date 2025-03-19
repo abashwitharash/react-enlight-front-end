@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+import * as enlightService from '../../services/enlightService';
 
 const EnlightForm = (props) => {
+  const { enlightId } = useParams();
+  console.log(enlightId);
   const [formData, setFormData] = useState({
     title: '',
     text: '',
@@ -13,13 +17,28 @@ const EnlightForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddEnlight(formData);
-    
+    if (enlightId) {
+      props.handleUpdateEnlight(enlightId, formData);
+    } else {
+      props.handleAddEnlight(formData);
+    }
   };
+    
+    useEffect(() => {
+      const fetchEnlight = async () => {
+        const enlightData = await enlightService.show(enlightId);
+        setFormData(enlightData);
+      };
+      if (enlightId) fetchEnlight();
+      return () => setFormData({ title: '', text: '', category: 'Fitness' });
+    }, [enlightId]);
+ 
+ 
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+         <h1>{enlightId ? 'Edit Enlight' : 'New Enlight'}</h1>
+      <form onSubmit={handleSubmit}> 
         <label htmlFor='title-input'>Title</label>
         <input
           required
