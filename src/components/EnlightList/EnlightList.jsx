@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 
 const EnlightList = (props) => {
+  console.log(props)
     return (
         <main>
           {props.enlights.map((enlight) => (

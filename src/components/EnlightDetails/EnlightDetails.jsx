@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import * as enlightService from '../../services/enlightService';
+import CommentForm from '../CommentForm/CommentForm';
 
 const EnlightDetails = () => {
     const [enlight, setEnlight] = useState(null);
@@ -18,12 +19,12 @@ const EnlightDetails = () => {
     
       if (!enlight) return <main>Loading...</main>;
 
-
+console.log(enlight)
       return (
         <main>
           <section>
             <header>
-              <p>{enlight.category.toUpperCase()}</p>
+              <p>{enlight.category}</p>
               <h1>{enlight.title}</h1>
               <p>
                 {`${enlight.author.username} posted on
@@ -34,6 +35,7 @@ const EnlightDetails = () => {
           </section>
           <section>
         <h2>Comments</h2>
+        <CommentForm />
 
         {!enlight.comments.length && <p>There are no comments.</p>}
 
