@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router';
+import { Routes, Route, useNavigate } from 'react-router';
 
 import NavBar from './components/NavBar/NavBar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
@@ -9,12 +9,15 @@ import Dashboard from './components/Dashboard/Dashboard';
 import EnlightList from './components/EnlightList/EnlightList';
 import * as enlightService from './services/enlightService';
 import EnlightDetails from './components/EnlightDetails/EnlightDetails';
+import EnlightForm from './components/EnlightForm/EnlightForm';
 
 import { UserContext } from './contexts/UserContext';
 
 const App = () => {
-  const { user } = useContext(UserContext);
+  
   const [enlights, setEnlights] = useState([]);
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllEnlights = async () => {
@@ -25,6 +28,12 @@ const App = () => {
     };
     if (user) fetchAllEnlights();
   }, [user]);
+
+  const handleAddEnlight = async (enlightFormData) => {
+    const newEnlight = await enlightService.create(enlightFormData);
+    setEnlights([newEnlight, ...enlights]);
+    navigate('/enlights');
+  };
   
   return (
     <>
@@ -39,6 +48,8 @@ const App = () => {
               path='/enlights/:enlightId'
               element={<EnlightDetails />}
             />
+            <Route path='/enlights/new' element={<EnlightForm handleAddEnlight={handleAddEnlight}/>  }  />
+
           </>
         ) : (
           <>
