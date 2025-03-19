@@ -10,7 +10,19 @@ const index = async () => {
       console.log(error);
     }
   };
+
+  const show = async (enlightId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${enlightId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
   export { 
     index,
+    show
   };
