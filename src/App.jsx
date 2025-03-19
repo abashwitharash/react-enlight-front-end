@@ -41,6 +41,11 @@ const App = () => {
     navigate('/enlights');
   };
   
+  const handleUpdateEnlight = async (enlightId, enlightFormData) => {
+    const updatedEnlight = await enlightService.update(enlightId, enlightFormData);
+    setEnlights(enlights.map((enlight) => (enlightId === enlight._id ? updatedEnlight : enlight)));
+    navigate(`/enlights/${enlightId}`);
+  };
   return (
     <>
       <NavBar/>
@@ -54,7 +59,13 @@ const App = () => {
               path='/enlights/:enlightId'
               element={<EnlightDetails handleDeleteEnlight={handleDeleteEnlight}/>}
             />
-            <Route path='/enlights/new' element={<EnlightForm handleAddEnlight={handleAddEnlight}/>  }  />
+            <Route path='/enlights/new'
+             element={<EnlightForm handleAddEnlight={handleAddEnlight}/>  } 
+            />
+            <Route
+              path='/enlights/:enlightId/edit'
+              element={<EnlightForm handleUpdateEnlight={handleUpdateEnlight}/>}
+            />
 
           </>
         ) : (

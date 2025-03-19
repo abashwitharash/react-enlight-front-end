@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useParams, Link } from 'react-router';
 import { useState, useEffect, useContext } from 'react';
 import * as enlightService from '../../services/enlightService';
 import CommentForm from '../CommentForm/CommentForm';
@@ -40,6 +40,7 @@ const EnlightDetails = (props) => {
           </p>
           {enlight.author._id === user._id && (
               <>
+                 <Link to={`/enlights/${enlightId}/edit`}>Edit</Link>
                  <button onClick={() => props.handleDeleteEnlight(enlightId)}>
               Delete
             </button>
