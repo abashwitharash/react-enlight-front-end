@@ -10,8 +10,6 @@ const EnlightDetails = (props) => {
   const [enlight, setEnlight] = useState(null);
 
 
-
-
   useEffect(() => {
     const fetchEnlight = async () => {
       const enlightData = await enlightService.show(enlightId);
@@ -27,15 +25,13 @@ const EnlightDetails = (props) => {
     setEnlight({ ...enlight, comments: [...enlight.comments, newComment] });
   };
 
-  const handleDeleteComment = async (commentId) => {
-    console.log('commentId:', commentId);
-    enlightService.deleteComment([ enlightId, commentId ]);
+  const handleDeleteComment = async (enlightId, commentId) => {
+    const deleteComment = await enlightService.deleteComment(enlightId, commentId)
     setEnlight({
       ...enlight,
       comments: enlight.comments.filter((comment) => comment._id !== commentId),
     });
   };
-
 
   return (
     <main>
@@ -48,13 +44,13 @@ const EnlightDetails = (props) => {
                 ${new Date(enlight.createdAt).toLocaleDateString()}`}
           </p>
           {enlight.author._id === user._id && (
-              <>
-                 <button ><Link to={`/enlights/${enlightId}/edit`}>Edit</Link> </button>
-                 <button onClick={() => props.handleDeleteEnlight(enlightId)}>
-              Delete
-            </button>
-          </>
-        )}
+            <>
+              <button ><Link to={`/enlights/${enlightId}/edit`}>Edit</Link> </button>
+              <button onClick={() => props.handleDeleteEnlight(enlightId)}>
+                Delete
+              </button>
+            </>
+          )}
         </header>
         <p>{enlight.text}</p>
       </section>
@@ -71,11 +67,11 @@ const EnlightDetails = (props) => {
                 {`${comment.author.username} posted on
                 ${new Date(comment.createdAt).toLocaleDateString()}`}
               </p>
-              <Link to={`/enlights/${enlightId}/comments/${commentId}/edit`}>Update</Link>
+              <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}>Update</Link>
 
-            <button onClick={() => props.handleDeleteComment(commentId)}>
-              Delete Comment
-            </button>
+              <button onClick={() => handleDeleteComment(enlightId, comment._id)}>
+                Delete Comment
+              </button>
 
             </header>
             <p>{comment.text}</p>
