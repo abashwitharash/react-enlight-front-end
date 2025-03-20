@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
+import styles from './EnlightList.module.css';
 
 const EnlightList = (props) => {
   console.log(props)
     return (
-        <main>
+        <main className={styles.container}>
           {props.enlights.map((enlight) => (
             <Link key={enlight._id} to={`/enlights/${enlight._id}`}>
               <article>
