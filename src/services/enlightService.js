@@ -80,6 +80,20 @@ const index = async () => {
       console.log(error);
     }
   }
+
+  const deleteComment = async (enlightId, commentId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${enlightId}/comments/${commentId}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+  };
   
   export { 
     index,
@@ -88,4 +102,5 @@ const index = async () => {
     createComment, 
     deleteEnlight,
     update,
+    deleteComment
   };

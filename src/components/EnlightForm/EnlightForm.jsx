@@ -4,7 +4,6 @@ import * as enlightService from '../../services/enlightService';
 
 const EnlightForm = (props) => {
   const { enlightId } = useParams();
-  console.log(enlightId);
   const [formData, setFormData] = useState({
     title: '',
     text: '',

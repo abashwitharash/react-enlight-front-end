@@ -27,6 +27,15 @@ const EnlightDetails = (props) => {
     setEnlight({ ...enlight, comments: [...enlight.comments, newComment] });
   };
 
+  const handleDeleteComment = async (commentId) => {
+    console.log('commentId:', commentId);
+    enlightService.deleteComment([ enlightId, commentId ]);
+    setEnlight({
+      ...enlight,
+      comments: enlight.comments.filter((comment) => comment._id !== commentId),
+    });
+  };
+
 
   return (
     <main>
@@ -40,7 +49,7 @@ const EnlightDetails = (props) => {
           </p>
           {enlight.author._id === user._id && (
               <>
-                 <Link to={`/enlights/${enlightId}/edit`}>Edit</Link>
+                 <button ><Link to={`/enlights/${enlightId}/edit`}>Edit</Link> </button>
                  <button onClick={() => props.handleDeleteEnlight(enlightId)}>
               Delete
             </button>
@@ -62,6 +71,12 @@ const EnlightDetails = (props) => {
                 {`${comment.author.username} posted on
                 ${new Date(comment.createdAt).toLocaleDateString()}`}
               </p>
+              <Link to={`/enlights/${enlightId}/comments/${commentId}/edit`}>Update</Link>
+
+            <button onClick={() => props.handleDeleteComment(commentId)}>
+              Delete Comment
+            </button>
+
             </header>
             <p>{comment.text}</p>
           </article>
