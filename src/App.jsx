@@ -10,11 +10,12 @@ import EnlightList from './components/EnlightList/EnlightList';
 import * as enlightService from './services/enlightService';
 import EnlightDetails from './components/EnlightDetails/EnlightDetails';
 import EnlightForm from './components/EnlightForm/EnlightForm';
+import CommentForm from './components/CommentForm/CommentForm';
 
 import { UserContext } from './contexts/UserContext';
 
 const App = () => {
-  
+
   const [enlights, setEnlights] = useState([]);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const App = () => {
     setEnlights(enlights.filter((enlight) => enlight._id !== enlightId));
     navigate('/enlights');
   };
-  
+
   const handleUpdateEnlight = async (enlightId, enlightFormData) => {
     const updatedEnlight = await enlightService.update(enlightId, enlightFormData);
     setEnlights(enlights.map((enlight) => (enlightId === enlight._id ? updatedEnlight : enlight)));
@@ -48,23 +49,27 @@ const App = () => {
   };
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <Routes>
         <Route path='/' element={user ? <Dashboard /> : <Landing />} />
         {user ? (
           <>
             {/* Protected routes (available only to signed-in users) */}
             <Route path='/enlights' element={<EnlightList enlights={enlights} />} />
-            <Route 
+            <Route
               path='/enlights/:enlightId'
-              element={<EnlightDetails handleDeleteEnlight={handleDeleteEnlight}/>}
+              element={<EnlightDetails handleDeleteEnlight={handleDeleteEnlight} />}
             />
             <Route path='/enlights/new'
-             element={<EnlightForm handleAddEnlight={handleAddEnlight}/>  } 
+              element={<EnlightForm handleAddEnlight={handleAddEnlight} />}
             />
             <Route
               path='/enlights/:enlightId/edit'
-              element={<EnlightForm handleUpdateEnlight={handleUpdateEnlight}/>}
+              element={<EnlightForm handleUpdateEnlight={handleUpdateEnlight} />}
+            />
+            <Route
+              path='/enlights/:enlightId/comments/:commentId/edit'
+              element={<CommentForm />}
             />
 
           </>
