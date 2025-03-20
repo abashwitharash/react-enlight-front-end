@@ -1,8 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router';
 
+import * as enlightService from '../../services/enlightService';
 
 const CommentForm = (props) => {
   const [formData, setFormData] = useState({ text: '' });
+  const { enlightId, commentId } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchEnlight = async () => {
+      const enlightData = await enlightService.show(enlightId);
+      setFormData(enlightData.comments.find((comment) => comment._id === commentId));
+    };
+    if (enlightId && commentId) fetchEnlight();
+  }, [enlightId, commentId]);
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -10,7 +22,12 @@ const CommentForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddComment(formData);
+    if (enlightId && commentId) {
+      enlightService.updateComment(enlightId, commentId, formData);
+      navigate(`/enlights/${enlightId}`);
+    } else {
+      props.handleAddComment(formData);
+    }
     setFormData({ text: '' });
   };
 

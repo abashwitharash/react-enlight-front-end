@@ -67,7 +67,7 @@ const EnlightDetails = (props) => {
                 {`${comment.author.username} posted on
                 ${new Date(comment.createdAt).toLocaleDateString()}`}
               </p>
-              <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}>Update</Link>
+              <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}>edit</Link>
 
               <button onClick={() => handleDeleteComment(enlightId, comment._id)}>
                 Delete Comment
