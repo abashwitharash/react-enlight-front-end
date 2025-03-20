@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import * as enlightService from '../../services/enlightService';
+import styles from './EnlightForm.module.css'
 
 const EnlightForm = (props) => {
   const { enlightId } = useParams();
@@ -35,7 +36,7 @@ const EnlightForm = (props) => {
  
 
   return (
-    <main>
+    <main className={styles.container}>
          <h1>{enlightId ? 'Edit Enlight' : 'New Enlight'}</h1>
       <form onSubmit={handleSubmit}> 
         <label htmlFor='title-input'>Title</label>
