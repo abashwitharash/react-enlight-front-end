@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import * as enlightService from '../../services/enlightService';
 import CommentForm from '../CommentForm/CommentForm';
 import { UserContext } from '../../contexts/UserContext';
+import styles from './EnlightDetails.module.css';
 
 const EnlightDetails = (props) => {
   const { enlightId } = useParams();
@@ -35,11 +36,12 @@ const EnlightDetails = (props) => {
   };
 
   return (
-    <main>
+    <main className={styles.container}>
       <section>
         <header>
           <p>{enlight.category}</p>
           <h1>{enlight.title}</h1>
+          <div>
           <p>
             {`${enlight.author.username} posted on
                 ${new Date(enlight.createdAt).toLocaleDateString()}`}
@@ -52,6 +54,7 @@ const EnlightDetails = (props) => {
               </button>
             </>
           )}
+          </div>
         </header>
         <p>{enlight.text}</p>
       </section>
@@ -64,6 +67,7 @@ const EnlightDetails = (props) => {
         {enlight.comments.map((comment) => (
           <article key={comment._id}>
             <header>
+              <div>
               <p>
                 {`${comment.author.username} posted on
                 ${new Date(comment.createdAt).toLocaleDateString()}`}
@@ -75,6 +79,7 @@ const EnlightDetails = (props) => {
               <button onClick={() => handleDeleteComment(enlightId, comment._id)}>
                 Delete Comment
               </button> )}
+              </div>
 
             </header>
             <p>{comment.text}</p>
