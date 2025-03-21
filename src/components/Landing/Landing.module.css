@@ -33,6 +33,7 @@
     box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.15);
+    background-image: url('https://cdn.pixabay.com/photo/2024/03/16/15/42/sand-8637315_1280.jpg');
   }
   
   .testimonial {
@@ -58,6 +59,8 @@
     width: 100%;
     font-size: 16px;
     line-height: 28px;
+    color: black;
+    font-weight: bold;
   }
   
   .container section > header * {
@@ -69,6 +72,7 @@
     margin: 5px;
     font-size: 36px;
     letter-spacing: 2px;
+    color: black;
   }
   
   .container section > header h3 {
@@ -100,6 +104,7 @@
     -moz-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
   }
+
   
   .container article header {
     display: flex;
@@ -136,6 +141,7 @@
   
   .testimonial footer img {
     height: 20px;
+    
   }
 
   .names {
@@ -151,6 +157,7 @@
     justify-content: center;
     color: rgb(220, 220, 220);
     border-top: 1px solid rgb(220, 220, 220);
+    
   }
   
   @media only screen and (max-width: 1200px) {
