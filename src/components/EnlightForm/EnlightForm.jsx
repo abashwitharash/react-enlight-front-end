@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import * as enlightService from '../../services/enlightService';
 import styles from './EnlightForm.module.css'
+import Icon from '../Icon/Icon';
 
 const EnlightForm = (props) => {
   const { enlightId } = useParams();
@@ -72,7 +73,8 @@ const EnlightForm = (props) => {
           <option value='Hobbies'>Hobbies</option>
           <option value='Career'>Career</option>
         </select>
-        <button type='submit'>SUBMIT</button>
+        <button type='submit'><Icon category='Create' />
+        </button>
       </form>
     </main>
   );
