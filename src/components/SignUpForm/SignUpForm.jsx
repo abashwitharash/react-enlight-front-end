@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { signUp } from '../../services/authService';
 
 import { UserContext } from '../../contexts/UserContext';
-import SignUpIcon from '../../assets/images/signup.svg';
+import EnlightSignupIcon from '../../assets/images/EnlightSignupIcon.svg';
 import styles from './SignUpForm.module.css';
 
 
@@ -44,7 +44,7 @@ const SignUpForm = () => {
   return (
     <main className={styles.container}>
       <section>
-        <img src={SignUpIcon} alt='An owl sitting on a sign' />
+        <img src={EnlightSignupIcon} alt='An owl sitting on a sign' />
       </section>
       <section>
         <form onSubmit={handleSubmit}>

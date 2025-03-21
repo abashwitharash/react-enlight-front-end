@@ -1,6 +1,7 @@
 import styles from './Landing.module.css';
 import Estars from '../../assets/images/Estars.svg';
 import EnlightLogo from '../../assets/images/EnlightLogo.svg';
+import { FaGithub } from 'react-icons/fa';
 
 const Landing = () => {
   return (
@@ -12,8 +13,7 @@ const Landing = () => {
 
         <section className={styles.about}>
           <header>
-            <h3>WHO WE ARE</h3>
-            <h1>ABOUT US</h1>
+            <h1>WHO WE ARE</h1>
           </header>
           <article>
             <p>
@@ -43,18 +43,28 @@ const Landing = () => {
 </p>
 
             <footer>
-              <img src={Estars} alt='Four blue stars' />
+              <img src={Estars} alt='Four green stars' className='stars' />
             </footer>
           </article>
         </section>
       </main>
 
-      <footer className={styles.footer}>
-        © <a className={styles.names} href='www.google.com' target='_blank' >Mica Cohen-Fuentes </a>
-        <a className={styles.names} href='www.google.com' target='_blank' >Kaya </a>
-        <a className={styles.names} href='www.google.com' target='_blank' >Arash </a>
-        <a className={styles.names} href='www.google.com' target='_blank' >Kiera</a>
-      </footer>
+{/* Got help with google to npm react icons */}
+      <footer className={styles.footer}> 
+  <span>© 2025</span>
+  <a className={styles.names} href="https://github.com/mcohenfuentes" target="_blank" rel="noopener noreferrer">
+    <FaGithub /> Mica Cohen-Fuentes
+  </a>
+  <a className={styles.names} href="https://github.com/kayawoods" target="_blank" rel="noopener noreferrer">
+    <FaGithub /> Kaya Woods
+  </a>
+  <a className={styles.names} href="https://github.com/abashwitharash" target="_blank" rel="noopener noreferrer">
+    <FaGithub /> Arash Salehpour
+  </a>
+  <a className={styles.names} href="https://github.com/shakieraearvin" target="_blank" rel="noopener noreferrer">
+    <FaGithub /> Shakiera Earvin
+  </a>
+</footer>
     </>
   );
 };
