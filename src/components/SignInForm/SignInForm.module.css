@@ -1,10 +1,11 @@
-/* src/components/SignUpForm/SignUpForm.module.css */
 
 .container {
     height: 100%;
     display: flex;
     align-items: center;
   }
+
+
   
   .container p {
     margin: 0;
@@ -23,13 +24,14 @@
     padding: 28px 21px;
     align-items: center;
     flex-direction: column;
+
   }
   
   .container section:first-child {
     height: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #fdfeff;
+    background-color:#E0EFDF;
   }
   
   .container section:nth-child(2) {
@@ -62,9 +64,9 @@
   }
   
   .container button {
-    color: white;
+    color: black;
     font-weight: 600;
-    background: #00a0df;
+    background: #E0EFDF;
     margin: 21px 0px 0px 0px;
   }
   
