@@ -31,7 +31,7 @@ const Landing = () => {
 
         <section className={styles.testimonial}>
           <header>
-            <h1>Why People Love The Enlight:</h1>
+            <h1>Why People Love Enlight:</h1>
           </header>
           <article>
           <header>

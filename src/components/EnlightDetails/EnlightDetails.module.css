@@ -125,9 +125,9 @@
   .container form button {
     color: white;
     font-weight: 600;
-    background: #00a0df;
-    width: 40px;
-    height: 40px;
+    background: #ACCC84;
+    width: 80px;
+    height: 70px;
     margin: 0 0 0 14px;
     border-radius: 50%;
     display: flex;
