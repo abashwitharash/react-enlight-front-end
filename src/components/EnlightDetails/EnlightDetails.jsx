@@ -4,6 +4,7 @@ import * as enlightService from '../../services/enlightService';
 import CommentForm from '../CommentForm/CommentForm';
 import { UserContext } from '../../contexts/UserContext';
 import styles from './EnlightDetails.module.css';
+import Loading from '../Loading/Loading';
 
 const EnlightDetails = (props) => {
   const { enlightId } = useParams();
@@ -19,7 +20,7 @@ const EnlightDetails = (props) => {
     fetchEnlight();
   }, [enlightId]);
 
-  if (!enlight) return <main>Loading...</main>;
+  if (!enlight) return <Loading />;
 
   const handleAddComment = async (commentFormData) => {
     const newComment = await enlightService.createComment(enlightId, commentFormData);
