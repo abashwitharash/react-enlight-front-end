@@ -18,7 +18,7 @@ const EnlightList = (props) => {
                 <Icon category={enlight.category} />
               </div>
               <p>Category: {enlight.category}</p>
-              <p>{enlight.text}</p>
+      
 
               <p>
         
