@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import styles from './EnlightList.module.css';
 import Icon from '../Icon/Icon';
+import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
 
 
 const EnlightList = (props) => {
@@ -20,11 +21,11 @@ const EnlightList = (props) => {
               <p>{enlight.text}</p>
 
               <p>
-                {`${enlight.author.username} posted on
-                    ${new Date(enlight.createdAt).toLocaleDateString()}`}
+        
               </p>
+              <AuthorInfo content={enlight} />
             </header>
-
+            <p>{enlight.text}</p>
           </article>
         </Link>
       ))}
