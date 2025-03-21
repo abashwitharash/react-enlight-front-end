@@ -79,7 +79,7 @@ const EnlightDetails = (props) => {
                   <AuthorInfo content={comment} />
                 {comment.author._id === user._id && (
                   <>
-                    <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}><button><Icon category='Edit' /></button></Link>
+                    <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}><Icon category='Edit' /></Link>
 
 
                     {comment.author._id === user._id && (

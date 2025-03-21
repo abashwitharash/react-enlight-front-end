@@ -2,35 +2,35 @@
 
 import Add from '../../assets/images/add.svg';
 import Edit from '../../assets/images/edit.svg';
-import News from '../../assets/images/news.svg';
+import Fitness from '../../assets/images/fitness.svg';
 import Like from '../../assets/images/like.svg';
 import Liked from '../../assets/images/liked.svg';
-import Music from '../../assets/images/music.svg';
-import Games from '../../assets/images/games.svg';
+import Hobbies from '../../assets/images/hobbies.svg';
+import Career from '../../assets/images/career.svg';
 import Trash from '../../assets/images/trash.svg';
-import Movies from '../../assets/images/movies.svg';
-import Sports from '../../assets/images/sports.svg';
+import Relationships from '../../assets/images/relationships.svg';
+import Sports from '../../assets/images/sports2.svg';
 import Create from '../../assets/images/create.svg';
 import Comments from '../../assets/images/comments.svg';
 import Calendar from '../../assets/images/calendar.svg';
-import Televison from '../../assets/images/television.svg';
+import Travel from '../../assets/images/travel.svg';
 
 const Icon = ({ category }) => {
   const icons = {
     Add: Add,
-    News: News,
+    Fitness: Fitness,
     Like: Like,
     Edit: Edit,
-    Music: Music,
-    Games: Games,
+    Hobbies: Hobbies,
+    Career: Career,
     Liked: Liked,
     Trash: Trash,
-    Movies: Movies,
+    Relationships: Relationships,
     Sports: Sports,
     Create: Create,
     Calendar: Calendar,
     Comments: Comments,
-    Television: Televison,
+    Travel: Travel,
   };
 
   return (
