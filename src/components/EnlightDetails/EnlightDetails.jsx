@@ -6,6 +6,7 @@ import { UserContext } from '../../contexts/UserContext';
 import styles from './EnlightDetails.module.css';
 import Loading from '../Loading/Loading';
 import Icon from '../Icon/Icon';
+import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
 
 const EnlightDetails = (props) => {
   const { enlightId } = useParams();
@@ -41,21 +42,26 @@ const EnlightDetails = (props) => {
     <main className={styles.container}>
       <section>
         <header>
-          <p>{enlight.category}</p>
-          <h1>{enlight.title}</h1>
           <div>
-          <p>
-            {`${enlight.author.username} posted on
-                ${new Date(enlight.createdAt).toLocaleDateString()}`}
-          </p>
-          {enlight.author._id === user._id && (
-            <>
-              <button ><Link to={`/enlights/${enlightId}/edit`}> <Icon category='Edit' /></Link> </button>
-              <button onClick={() => props.handleDeleteEnlight(enlightId)}>
-              <Icon category='Trash' />
-              </button>
-            </>
-          )}
+            <p>
+              <header>
+                <p>{enlight.category.toUpperCase()}</p>
+                <h1>{enlight.title}</h1>
+                <div>
+                  <AuthorInfo content={enlight} />
+                  {enlight.author._id === user._id && (
+                    <>
+                      <Link to={`/enlights/${enlightId}/edit`}>
+                        <Icon category='Edit' />
+                      </Link>
+                      <button onClick={() => props.handleDeleteEnlight(enlightId)}>
+                        <Icon category='Trash' />
+                      </button>
+                    </>
+                  )}
+                </div>
+              </header>
+            </p>
           </div>
         </header>
         <p>{enlight.text}</p>
@@ -70,17 +76,18 @@ const EnlightDetails = (props) => {
           <article key={comment._id}>
             <header>
               <div>
-              <p>
-                {`${comment.author.username} posted on
-                ${new Date(comment.createdAt).toLocaleDateString()}`}
-              </p>
-              {comment.author._id === user._id && (
-                <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}><button><Icon category='Edit' /></button></Link>
-              )}
-              {comment.author._id === user._id && (
-              <button onClick={() => handleDeleteComment(enlightId, comment._id)}>
-                <Icon category='Trash' />
-              </button> )}
+                  <AuthorInfo content={comment} />
+                {comment.author._id === user._id && (
+                  <>
+                    <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}><button><Icon category='Edit' /></button></Link>
+
+
+                    {comment.author._id === user._id && (
+                      <button onClick={() => handleDeleteComment(enlightId, comment._id)}>
+                        <Icon category='Trash' />
+                      </button>)}
+                  </>
+                )}
               </div>
 
             </header>
