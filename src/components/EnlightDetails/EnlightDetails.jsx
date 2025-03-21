@@ -5,6 +5,7 @@ import CommentForm from '../CommentForm/CommentForm';
 import { UserContext } from '../../contexts/UserContext';
 import styles from './EnlightDetails.module.css';
 import Loading from '../Loading/Loading';
+import Icon from '../Icon/Icon';
 
 const EnlightDetails = (props) => {
   const { enlightId } = useParams();
@@ -49,9 +50,9 @@ const EnlightDetails = (props) => {
           </p>
           {enlight.author._id === user._id && (
             <>
-              <button ><Link to={`/enlights/${enlightId}/edit`}>Edit</Link> </button>
+              <button ><Link to={`/enlights/${enlightId}/edit`}> <Icon category='Edit' /></Link> </button>
               <button onClick={() => props.handleDeleteEnlight(enlightId)}>
-                Delete
+              <Icon category='Trash' />
               </button>
             </>
           )}
@@ -74,11 +75,11 @@ const EnlightDetails = (props) => {
                 ${new Date(comment.createdAt).toLocaleDateString()}`}
               </p>
               {comment.author._id === user._id && (
-                <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}><button>Edit</button></Link>
+                <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}><button><Icon category='Edit' /></button></Link>
               )}
               {comment.author._id === user._id && (
               <button onClick={() => handleDeleteComment(enlightId, comment._id)}>
-                Delete Comment
+                <Icon category='Trash' />
               </button> )}
               </div>
 
