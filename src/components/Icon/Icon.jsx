@@ -1,10 +1,6 @@
-// src/components/Icon/Icon.jsx
-
 import Add from '../../assets/images/add.svg';
 import Edit from '../../assets/images/edit.svg';
 import Fitness from '../../assets/images/fitness.svg';
-import Like from '../../assets/images/like.svg';
-import Liked from '../../assets/images/liked.svg';
 import Hobbies from '../../assets/images/hobbies.svg';
 import Career from '../../assets/images/career.svg';
 import Trash from '../../assets/images/trash.svg';
@@ -19,11 +15,9 @@ const Icon = ({ category }) => {
   const icons = {
     Add: Add,
     Fitness: Fitness,
-    Like: Like,
     Edit: Edit,
     Hobbies: Hobbies,
     Career: Career,
-    Liked: Liked,
     Trash: Trash,
     Relationships: Relationships,
     Sports: Sports,

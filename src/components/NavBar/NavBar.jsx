@@ -16,7 +16,7 @@ const NavBar = () => {
 
   return (
     <nav className={styles.container}>
-       <Link to='/'><img src={NavbarLogo} alt='Enlight Logo' /></Link>
+      <Link to='/'><img src={NavbarLogo} alt='Enlight Logo' /></Link>
       {user ? (
         <ul>
           <li>Welcome, {user.username}</li>

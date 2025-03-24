@@ -24,22 +24,22 @@ const EnlightForm = (props) => {
       props.handleAddEnlight(formData);
     }
   };
-    
-    useEffect(() => {
-      const fetchEnlight = async () => {
-        const enlightData = await enlightService.show(enlightId);
-        setFormData(enlightData);
-      };
-      if (enlightId) fetchEnlight();
-      return () => setFormData({ title: '', text: '', category: 'Fitness' });
-    }, [enlightId]);
- 
- 
+
+  useEffect(() => {
+    const fetchEnlight = async () => {
+      const enlightData = await enlightService.show(enlightId);
+      setFormData(enlightData);
+    };
+    if (enlightId) fetchEnlight();
+    return () => setFormData({ title: '', text: '', category: 'Fitness' });
+  }, [enlightId]);
+
+
 
   return (
     <main className={styles.container}>
-         <h1>{enlightId ? 'Edit Enlight' : 'New Enlight'}</h1>
-      <form onSubmit={handleSubmit}> 
+      <h1>{enlightId ? 'Edit Enlight' : 'New Enlight'}</h1>
+      <form onSubmit={handleSubmit}>
         <label htmlFor='title-input'>Title</label>
         <input
           required

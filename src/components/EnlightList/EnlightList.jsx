@@ -18,10 +18,10 @@ const EnlightList = (props) => {
                 <Icon category={enlight.category} />
               </div>
               <p>Category: {enlight.category}</p>
-      
+
 
               <p>
-        
+
               </p>
               <AuthorInfo content={enlight} />
             </header>
