@@ -130,13 +130,12 @@
   
   .testimonial header p {
     margin: 0;
-    opacity: 0.4;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
   }
   
   .testimonial article > p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
   }
   
