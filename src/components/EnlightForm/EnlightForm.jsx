@@ -73,7 +73,7 @@ const EnlightForm = (props) => {
           <option value='Hobbies'>Hobbies</option>
           <option value='Career'>Career</option>
         </select>
-        <button type='submit'><Icon category='Create' />
+        <button type='submit'> SUBMIT
         </button>
       </form>
     </main>
