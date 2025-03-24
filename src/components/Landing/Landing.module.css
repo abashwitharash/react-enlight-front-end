@@ -146,6 +146,7 @@
   }
 
   .names {
+    font-family: "Fira Sans", sans-serif;
     color: white;
     margin-left: 1rem;
   }
@@ -192,6 +193,7 @@
     .testimonial {
       height: 700px;
     }
+
   }
   
   @media only screen and (max-width: 414px) {
@@ -209,5 +211,14 @@
     }
     .container section > img {
       min-width: 340px;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .names {
+      font-size: 10px;
+      margin-left: .035rem;
+    }
+    .copyright {
+      font-size: 10px;
     }
   }

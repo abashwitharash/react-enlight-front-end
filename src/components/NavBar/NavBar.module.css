@@ -41,5 +41,9 @@
     .container li {
       font-size: 15px;
     }
+
+    .container img {
+      display: none;
+    }
   }
   
