@@ -24,7 +24,7 @@ const App = () => {
     const fetchAllEnlights = async () => {
       const enlightsData = await enlightService.index();
 
-      // update to set state:
+
       setEnlights(enlightsData);
     };
     if (user) fetchAllEnlights();
@@ -54,7 +54,7 @@ const App = () => {
         <Route path='/' element={<Landing />} />
         {user ? (
           <>
-            {/* Protected routes (available only to signed-in users) */}
+
             <Route path='/enlights' element={<EnlightList enlights={enlights} />} />
             <Route
               path='/enlights/:enlightId'
@@ -75,7 +75,7 @@ const App = () => {
           </>
         ) : (
           <>
-            {/* Non-user routes (available only to guests) */}
+
             <Route path='/sign-up' element={<SignUpForm />} />
             <Route path='/sign-in' element={<SignInForm />} />
           </>

@@ -43,9 +43,9 @@ const EnlightDetails = (props) => {
       <section>
         <header>
           <div>
-            <p>
+           
               <header>
-                <p>{enlight.category.toUpperCase()}</p>
+                {enlight.category.toUpperCase()}
                 <h1>{enlight.title}</h1>
                 <div>
                   <AuthorInfo content={enlight} />
@@ -61,7 +61,7 @@ const EnlightDetails = (props) => {
                   )}
                 </div>
               </header>
-            </p>
+           
           </div>
         </header>
         <p>{enlight.text}</p>
@@ -76,7 +76,7 @@ const EnlightDetails = (props) => {
           <article key={comment._id}>
             <header>
               <div>
-                  <AuthorInfo content={comment} />
+                <AuthorInfo content={comment} />
                 {comment.author._id === user._id && (
                   <>
                     <Link to={`/enlights/${enlightId}/comments/${comment._id}/edit`}><Icon category='Edit' /></Link>
