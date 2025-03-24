@@ -51,7 +51,7 @@ const Landing = () => {
 
 {/* Got help with google to npm react icons */}
       <footer className={styles.footer}> 
-  <span>© 2025</span>
+  <span className={styles.copyright}>© 2025</span>
   <a className={styles.names} href="https://github.com/mcohenfuentes" target="_blank" rel="noopener noreferrer">
     <FaGithub /> Mica Cohen-Fuentes
   </a>
