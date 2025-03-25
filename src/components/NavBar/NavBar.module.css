@@ -34,7 +34,7 @@
     text-align: right;
   }
   
-  @media only screen and (max-width: 414px) {
+  @media only screen and (max-width: 600px) {
     .container ul {
       padding-left: 0px;
     }
