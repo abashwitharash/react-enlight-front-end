@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import * as enlightService from '../../services/enlightService';
 import styles from './EnlightForm.module.css'
-import Icon from '../Icon/Icon';
+
 
 const EnlightForm = (props) => {
   const { enlightId } = useParams();
